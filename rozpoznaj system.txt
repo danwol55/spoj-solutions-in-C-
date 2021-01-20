@@ -1,0 +1,122 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+    string liczba2[3];
+    int liczba1[3];
+    bool zliterami = false;
+    char znaki[] = {'A', 'B', 'C', 'D', 'E', 'F'};
+
+    while(cin>>liczba2[0]>>liczba2[1]>>liczba2[2])
+    {
+        for(int j=0; j<3; j++)
+        {
+            string liczba = liczba2[j];
+            int rozmiar = liczba.length();
+            for(int j1=0; j1<rozmiar; j1++)
+            {
+                if(isalpha(liczba[j1]))
+                {
+                    zliterami = true;
+                    break;
+                }
+            }
+        }
+
+        if(zliterami == true)
+        {
+            int najwieksza;
+            bool znalazlem = false;
+            for(int j=0; j<3; j++)
+            {
+                string liczba3 = liczba2[j];
+                int rozmiar = liczba2[j].length();
+                for(int j1=0; j1<rozmiar; j1++)
+                {
+                    if(liczba3[j1]>=65 && liczba3[j1]<=70)
+                    {
+                        if(znalazlem==false)
+                        {
+                            znalazlem=true;
+                            najwieksza=liczba3[j1];
+                        }
+                        else
+                        {
+                            if(liczba3[j1]>najwieksza)
+                            {
+                                najwieksza=liczba3[j1];
+                            }
+                        }
+                    }
+                }
+            }
+            najwieksza-=54;
+            for(int i=najwieksza; i<=16; i++)
+            {
+                for(int j=0; j<3; j++)
+                {
+                    int liczba10 = 0;
+                    string liczba = liczba2[j];
+                    int rozmiar = liczba.length();
+                    for(int j1=0; j1<rozmiar; j1++)
+                    {
+                        bool litera = false;
+                        for(int j2=0; j2<6; j2++)
+                        {
+                            if(liczba[j1]==znaki[j2])
+                            {
+                                litera = true;
+                                liczba10+=(j2+10)*pow(i, rozmiar-1-j1);
+
+                            }
+                        }
+                        if(litera==false)
+                        {
+                            liczba10+=(liczba[j1]-48)*pow(i, rozmiar-1-j1);
+                        }
+                    }
+                    liczba1[j]=liczba10;
+                }
+                if(liczba1[0]*liczba1[1]==liczba1[2])
+                {
+                    if(i<16) cout<<i<<" ";
+                    else if(i==16) cout<<i<<endl;
+                }
+            }
+        }
+        else
+        {
+            for(int i=0; i<=16; i++)
+            {
+                for(int j=0; j<3; j++)
+                {
+                    string liczba = liczba2[j];
+                    int rozmiar = liczba.length();
+                    int liczba10 = 0;
+                    for(int j1=0; j1<rozmiar; j1++)
+                    {
+                        liczba10+=(liczba[j1]-48)*pow(i,rozmiar-1-j1);
+                    }
+                    liczba1[j] = liczba10;
+                }
+                if(liczba1[0]*liczba1[1]==liczba1[2])
+                {
+                    if(i<16) cout<<i<<" ";
+                    else if(i==16) cout<<i<<endl;
+                }
+            }
+        }
+    }
+
+
+    return 0;
+
+}
+
+

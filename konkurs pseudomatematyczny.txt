@@ -1,0 +1,58 @@
+#include <algorithm>
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+    int uczestnikow;
+    int najwieksza;
+    int zestaw;
+
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+        int ile=0;
+        cin>>uczestnikow;
+        int *tab = new int[uczestnikow];
+        for(int i=0; i<uczestnikow; i++)
+        {
+            cin>>tab[i];
+        }
+        sort(tab, tab+uczestnikow);
+
+        for(int i=0; i<uczestnikow; i++)
+        {
+            najwieksza = tab[0];
+            if(tab[i]>najwieksza)
+            {
+                najwieksza = tab[i];
+            }
+
+        }
+        for(int i=0; i<uczestnikow; i++)
+        {
+            if(tab[i]==najwieksza)
+            {
+                ile++;
+            }
+        }
+        for(int i=0; i<ile; i++)
+        {
+            cout<<najwieksza<<" ";
+        }
+        for(int i=0; i<uczestnikow-ile; i++)
+        {
+            cout<<tab[i]<<" ";
+        }
+        cout<<endl;
+
+        delete [] tab;
+    }
+
+
+    return 0;
+}

@@ -1,0 +1,81 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int zastap(int ile, int z[])
+{
+    int minValue = 1;
+    bool znalazlem = true;
+    while(znalazlem)
+    {
+        znalazlem = false;
+        for(int i=0; i<ile; i++)
+        {
+            if(z[i]==minValue)
+            {
+                minValue++;
+                znalazlem = true;
+            }
+        }
+
+    }
+    return minValue;
+}
+
+
+int main()
+{
+    int ile;
+    int zestaw;
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+        cin>>ile;
+        int *zbior = new int[ile];
+        for(int j=0; j<ile; j++)
+        {
+            cin>>zbior[j];
+        }
+        int aktIndeks;
+        bool znalazlem = false;
+        for(int j=0; j<ile-1; j++)
+        {
+            aktIndeks = zbior[j];
+            for(int j1=j+1; j1<ile; j1++)
+            {
+                if(zbior[j1]==0) continue;
+                if(aktIndeks==zbior[j1])
+                {
+                    zbior[j1]=0;
+                    znalazlem = true;
+                }
+            }
+
+        }
+        if(znalazlem == true)
+        {
+            for(int j=0; j<ile; j++)
+            {
+                if(zbior[j]==0)
+                {
+                    zbior[j]=zastap(ile, zbior);
+                }
+            }
+            for(int j=0; j<ile-1; j++)
+            {
+                cout<<zbior[j]<<" ";
+            }
+            cout<<zbior[ile-1]<<endl;
+        }
+        else cout<<"OK"<<endl;
+
+
+        delete [] zbior;
+    }
+
+    return 0;
+
+}
+
+

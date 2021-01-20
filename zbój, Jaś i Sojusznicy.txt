@@ -1,0 +1,145 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+char czasW[5], dataW[10];
+char zamianaCzas(int godzinaW, int minutaW);
+char zamianaData(int rok, int miesiac, int dzien);
+
+int main()
+{
+    char godzina[5], data[10];
+    float czasDotarcia, odleglosc, predkosc;
+    while(cin>>data>>godzina>>odleglosc>>predkosc)
+    {
+        czasDotarcia = floor((odleglosc/predkosc)*60);
+        int godzinaDotarcia = (int)(czasDotarcia/60);
+        int minutaDotarcia = ((int)czasDotarcia%60);
+        int godzina1 = ((int)godzina[0]-48)*10;
+        godzina1 += (int)godzina[1]-48;
+        int minuta = ((int)godzina[3]-48)*10;
+        minuta += (int)godzina[4]-48;
+        int dzien = ((int)data[8]-48)*10;
+        dzien += (int)data[9]-48;
+        int miesiac = ((int)data[5]-48)*10;
+        miesiac += (int)data[6]-48;
+        int rok = ((int)data[0]-48)*1000;
+        rok += ((int)data[1]-48)*100;
+        rok += ((int)data[2]-48)*10;
+        rok += ((int)data[3]-48);
+
+        int godzinaWymarszu = godzina1-godzinaDotarcia;
+        int minutaWymarszu = minuta-minutaDotarcia;
+        if(godzinaWymarszu<0 || minutaWymarszu<0)
+        {
+            dzien -= 1;
+        }
+        if(dzien<1)
+        {
+            miesiac -= 1;
+            if(miesiac==1 || miesiac==3 || miesiac==5
+               || miesiac ==7 || miesiac==8 || miesiac==10
+               || miesiac ==12)
+            {
+                dzien = 31;
+            }
+            else if(miesiac==2 && rok%4==0)
+            {
+                dzien = 29;
+            }
+            else if(miesiac==2 && rok%4!=0)
+            {
+                dzien = 28;
+            }
+            else if(miesiac==4 || miesiac==6
+                    || miesiac==9 || miesiac==11)
+            {
+                dzien = 30;
+            }
+        }
+        if(miesiac<1)
+        {
+            rok -= 1;
+        }
+        if(godzinaWymarszu<0)
+        {
+            godzinaWymarszu = 23+godzinaWymarszu;
+        }
+        if(minutaWymarszu<0)
+        {
+            minutaWymarszu = 60+minutaWymarszu;
+            if(godzinaWymarszu<=0)
+            {
+                godzinaWymarszu = 23;
+            }
+        }
+        zamianaCzas(godzinaWymarszu, minutaWymarszu);
+        zamianaData(rok, miesiac, dzien);
+        cout<<dataW<<" "<<czasW<<endl;
+
+    }
+
+
+
+	return 0;
+
+}
+
+char zamianaData(int rok, int miesiac, int dzien)
+{
+    dataW[0]=rok/1000%10+48;
+    dataW[1]=rok/100%10+48;
+    dataW[2]=rok/10%10+48;
+    dataW[3]=rok%10+48;
+    dataW[4]='.';
+    if(miesiac<10)
+    {
+        dataW[5]='0';
+        dataW[6]=miesiac+48;
+    }
+    else if(miesiac>=10)
+    {
+        dataW[5]=miesiac/10%10+48;
+        dataW[6]=miesiac%10+48;
+    }
+    dataW[7]='.';
+    if(dzien<10)
+    {
+        dataW[8]='0';
+        dataW[9]=dzien+48;
+    }
+    else if(dzien>=10)
+    {
+        dataW[8]=dzien/10%10+48;
+        dataW[9]=dzien%10+48;
+    }
+}
+
+char zamianaCzas(int godzinaW, int minutaW)
+{
+    if(godzinaW<10)
+    {
+        czasW[0]='0';
+        czasW[1]=godzinaW+48;
+    }
+    else if(godzinaW>=10)
+    {
+        czasW[0]=godzinaW/10%10+48;
+        czasW[1]=godzinaW%10+48;
+    }
+    czasW[2]=':';
+    if(minutaW<10)
+    {
+        czasW[3]='0';
+        czasW[4]=minutaW+48;
+    }
+    else if(minutaW>=10)
+    {
+        czasW[3]=minutaW/10%10+48;
+        czasW[4]=minutaW%10+48;
+    }
+
+}
+

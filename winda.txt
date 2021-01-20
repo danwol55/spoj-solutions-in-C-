@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+
+int main()
+{
+    string kombinacja;
+    int zestaw, pietra;
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+        cin>>pietra;
+        cin>>kombinacja;
+        bool mozliwosc;
+        int pietroBazowe;
+        for(int j1=1; j1<=pietra; j1++)
+        {
+            pietroBazowe = j1;
+            for(int j=0; j<kombinacja.length(); j++)
+            {
+                if(kombinacja[j]=='U')
+                {
+                    pietroBazowe++;
+                    if(pietroBazowe==pietra+1)
+                    {
+                        mozliwosc = false; break;
+                    }
+                    else mozliwosc = true;
+                }
+                else if(kombinacja[j]=='D')
+                {
+                    pietroBazowe--;
+                    if(pietroBazowe==0)
+                    {
+                        mozliwosc = false; break;
+                    }
+                    else mozliwosc = true;
+                }
+            }
+            if(mozliwosc == true)
+            {
+                cout<<"TAK"<<endl; break;
+            }
+        }
+        if(mozliwosc == false) cout<<"NIE"<<endl;
+    }
+
+    return 0;
+
+}
+
+

@@ -1,0 +1,91 @@
+#include <iostream>
+
+using namespace std;
+
+int godzina;
+int minuta;
+
+void wypisz()
+{
+	if (godzina < 10)
+	{
+		cout << ",0" << godzina << ":";
+	}
+	else
+	{
+		cout << "," << godzina << ":";
+	}
+	if (minuta < 10)
+	{
+		cout << "0" << minuta;
+	}
+	else
+	{
+		cout << minuta;
+	}
+}
+
+int main()
+{
+	char rozpoczecie[5];
+	int przerwy[100];
+	int przerwa;
+	
+	
+	cin >> rozpoczecie;
+
+	int godzina1 = (rozpoczecie[0]-48)*10;
+	int godzina2 = (rozpoczecie[1] - 48);
+	godzina = godzina1 + godzina2;
+	int minuta1 = (rozpoczecie[3]-48)*10;
+	int minuta2 = (rozpoczecie[4] - 48);
+	minuta = minuta1 + minuta2;
+
+	int iterator = 0;
+	while (cin >> przerwa)
+	{
+		przerwy[iterator] = przerwa;
+		iterator++;
+	}
+	int iterator1 = 0;
+	int pierwsza = 0;
+	while (iterator)
+	{
+		if (pierwsza == 0)
+		{
+			cout << rozpoczecie;
+		}
+		minuta += 45;
+		if (minuta >= 60)
+		{
+			godzina++;
+			minuta -= 60;
+		}
+		wypisz();
+		minuta += przerwy[iterator1];
+		if (minuta >= 60)
+		{
+			godzina++;
+			minuta -= 60;
+		}
+		wypisz();
+		if (iterator == 1)
+		{
+			minuta += 45;
+			if (minuta >= 60)
+			{
+				godzina++;
+				minuta -= 60;
+			}
+			wypisz();
+		}
+		pierwsza++;
+		iterator1++;
+		iterator--;
+	}
+
+	return 0;
+	
+	
+	
+}

@@ -1,0 +1,78 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+    string program;
+    string program1;
+    string new_program;
+
+    while(getline(cin, program))
+    {
+        program1 = program;
+        for(int i=0; i<program1.length(); i++)
+        {
+            if(program1[i]=='?' && program1[i+1]=='?')
+            {
+                if(program1[i+2]=='=')
+                {
+                    new_program+='#';
+                }
+                else if(program1[i+2]=='/')
+                {
+                    new_program+=92;
+                }
+                else if(program1[i+2]==39)
+                {
+                    new_program+='^';
+                }
+                else if(program1[i+2]=='(')
+                {
+                    new_program+='[';
+                }
+                else if(program1[i+2]==')')
+                {
+                    new_program+=']';
+                }
+                else if(program1[i+2]=='!')
+                {
+                    new_program+='|';
+                }
+                else if(program1[i+2]=='<')
+                {
+                    new_program+='{';
+                }
+                else if(program1[i+2]=='>')
+                {
+                    new_program+='}';
+                }
+                else if(program1[i+2]=='-')
+                {
+                    new_program+='~';
+                }
+
+            }
+            else
+            {
+                if(program1[i-1]!='?')
+                {
+                    new_program+=program1[i];
+                }
+
+            }
+        }
+        new_program+="\n";
+
+    }
+
+    cout<<new_program<<endl;
+
+
+
+    return 0;
+}
+

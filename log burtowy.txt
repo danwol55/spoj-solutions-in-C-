@@ -1,0 +1,61 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+string godzina1, godzina2;
+int godzina11, minuta11, sekunda11;
+int godzina22, minuta22, sekunda22;
+
+int zamiana(char n, char m)
+{
+    int czas;
+    if(n=='0')
+    {
+        czas = (m-48);
+    }
+    else
+    {
+        czas = ((n-48)*10);
+        czas += (m-48);
+    }
+    return czas;
+}
+
+int main()
+{
+    int czas;
+    float predkoscK;
+    float predkoscM;
+    float dlugoscStatku;
+    while(cin>>godzina1>>godzina2>>dlugoscStatku)
+    {
+        godzina11 = zamiana(godzina1[0], godzina1[1]);
+        minuta11 = zamiana(godzina1[3], godzina1[4]);
+        sekunda11 = zamiana(godzina1[6], godzina1[7]);
+        godzina22 = zamiana(godzina2[0], godzina2[1]);
+        minuta22 = zamiana(godzina2[3], godzina2[4]);
+        sekunda22 = zamiana(godzina2[6], godzina2[7]);
+        int sekund1 = godzina11*3600 + minuta11*60 + sekunda11;
+        int sekund2 = godzina22*3600 + minuta22*60 + sekunda22;
+        if(sekund2<sekund1)
+        {
+            czas = (86400 - sekund1) + sekund2;
+        }
+        else czas = sekund2 - sekund1;
+        predkoscK = round((dlugoscStatku / czas) * 3.6);
+        predkoscM = round((predkoscK / 1.852) * 100)/100;
+        cout.setf(ios::showpoint);
+        cout<<setprecision(3)<<predkoscK<<" "<<predkoscM<<endl;
+        cout.unsetf(ios::showpoint);
+    }
+
+
+
+    return 0;
+
+}
+
+

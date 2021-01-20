@@ -1,0 +1,135 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+    string dane;
+    string wyraz;
+    string dane1;
+    int razem=0;
+
+    while(getline(cin, dane))
+    {
+        wyraz=dane;
+        int spacje=0;
+        int razem1=0;
+        int symbol=0;
+        for(int i=0; i<wyraz.length(); i++)
+        {
+            if(wyraz[i]>=97 && wyraz[i]<=122)
+            {
+                if(symbol==0)
+                {
+                    dane1+=wyraz[i];
+                }
+            }
+            else if(wyraz[i]>=48 && wyraz[i]<=57)
+            {
+                if(symbol==0)
+                {
+                    dane1+=wyraz[i];
+                }
+            }
+            else if(wyraz[i]==60)
+            {
+                razem1++;
+            }
+            else if(wyraz[i]==61)
+            {
+                dane1+=" = ";
+            }
+            else if(wyraz[i]==47)
+            {
+                if(wyraz[i+1]>=97 && wyraz[i+1]<=122)
+                {
+                    symbol++;
+                }
+                razem--;
+            }
+            else if(wyraz[i]==32)
+            {
+                if(spacje==0)
+                {
+                    if(razem1>0)
+                    {
+                        dane1+=":\n";
+                        razem++;
+                        for(int i=0; i<razem*4; i++)
+                        {
+                            dane1+=" ";
+                        }
+                    }
+
+
+                }
+                else if(spacje>0)
+                {
+                    if(wyraz[i+1]>=97 && wyraz[i+1]<=122)
+                    {
+                        dane1+="\n";
+                    }
+                    else if(wyraz[i+1]==60)
+                    {
+                        dane1+="\n";
+                    }
+                    for(int i=0; i<razem*4; i++)
+                    {
+                        dane1+=" ";
+                    }
+
+                }
+                razem1=0;
+                spacje++;
+            }
+
+            else if(wyraz[i]==62)
+            {
+                if(symbol==0)
+                {
+                    if(spacje==0)
+                    {
+                        dane1+=":\n";
+                        razem++;
+                        for(int i=0; i<razem*4; i++)
+                        {
+                            dane1+=" ";
+                        }
+                    }
+                    else if(spacje>0)
+                    {
+                        if(razem1>0)
+                        {
+                            dane1+=":\n";
+                        }
+                        else
+                        {
+                            dane1+="\n";
+                        }
+                        for(int i=0; i<razem*4; i++)
+                        {
+                            dane1+=" ";
+                        }
+
+                    }
+                    razem1=0;
+                    symbol=0;
+                    spacje=0;
+                }
+            }
+
+        }
+
+    }
+    cout<<dane1<<endl;
+
+
+
+    return 0;
+}
+
+
+

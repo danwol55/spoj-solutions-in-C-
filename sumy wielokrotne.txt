@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int liczba;
+    long long suma1=0;
+    long long suma=0;
+
+    while(cin>>liczba)
+    {
+       suma+=liczba;
+       if(liczba==0)
+       {
+           suma1+=suma;
+           cout<<suma<<endl;
+           suma=0;
+       }
+
+    }
+    cout<<suma1<<endl;
+
+
+    return 0;
+}
+

@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	char wyraz[20];
+	int zestaw;
+
+	cin >> zestaw;
+	for (int i = 0; i < zestaw; i++)
+	{
+		cin >> wyraz;
+		for (int i1 = 0; i1 < 20; i1++)
+		{
+			if (wyraz[i1] == 'A') wyraz[i1] = 50;
+			else if (wyraz[i1] == 'B') wyraz[i1] = 50;
+			else if (wyraz[i1] == 'C') wyraz[i1] = 50;
+			else if (wyraz[i1] == 'D') wyraz[i1] = 51;
+			else if (wyraz[i1] == 'E') wyraz[i1] = 51;
+			else if (wyraz[i1] == 'F') wyraz[i1] = 51;
+			else if (wyraz[i1] == 'G') wyraz[i1] = 52;
+			else if (wyraz[i1] == 'H') wyraz[i1] = 52;
+			else if (wyraz[i1] == 'I') wyraz[i1] = 52;
+			else if (wyraz[i1] == 'J') wyraz[i1] = 53;
+			else if (wyraz[i1] == 'K') wyraz[i1] = 53;
+			else if (wyraz[i1] == 'L') wyraz[i1] = 53;
+			else if (wyraz[i1] == 'M') wyraz[i1] = 54;
+			else if (wyraz[i1] == 'N') wyraz[i1] = 54;
+			else if (wyraz[i1] == 'O') wyraz[i1] = 54;
+			else if (wyraz[i1] == 'P') wyraz[i1] = 55;
+			else if (wyraz[i1] == 'Q') wyraz[i1] = 55;
+			else if (wyraz[i1] == 'R') wyraz[i1] = 55;
+			else if (wyraz[i1] == 'S') wyraz[i1] = 55;
+			else if (wyraz[i1] == 'T') wyraz[i1] = 56;
+			else if (wyraz[i1] == 'U') wyraz[i1] = 56;
+			else if (wyraz[i1] == 'V') wyraz[i1] = 56;
+			else if (wyraz[i1] == 'W') wyraz[i1] = 57;
+			else if (wyraz[i1] == 'X') wyraz[i1] = 57;
+			else if (wyraz[i1] == 'Y') wyraz[i1] = 57;
+			else if (wyraz[i1] == 'Z') wyraz[i1] = 57;
+		}
+		cout << wyraz << endl;
+	}
+
+
+	return 0;
+	
+	
+	
+}

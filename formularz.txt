@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    string imie, nazwisko;
+    int dzien, miesiac, rok;
+
+    while(cin>>imie>>nazwisko>>rok>>miesiac>>dzien)
+    {
+        int punkty=0;
+        int razem1=0;
+        int razem=0;
+
+        if(imie[0]>=65 && imie[0]<=90)
+        {
+            for(int i=1; i<imie.length(); i++)
+            {
+                if(imie[i]>=97 && imie[i]<=122)
+                {
+                    razem=1;
+                }
+                else
+                {
+                    razem=0;
+                    break;
+                }
+
+            }
+            if(razem==1) punkty++;
+        }
+        if((nazwisko[0]>=65 && nazwisko[0]<=90) && punkty==1)
+        {
+            for(int i=1; i<nazwisko.length(); i++)
+            {
+                if(nazwisko[i]>=97 && nazwisko[i]<=122)
+                {
+                    razem=1;
+                }
+                else
+                {
+                    razem=0;
+                    break;
+                }
+
+            }
+            if(razem==1) punkty++;
+
+
+
+        }
+        if((rok>=1990 && rok<=2000)&&punkty==2)
+        {
+            razem1++;
+        }
+        if((miesiac>=01 && miesiac<=12)&&punkty==2)
+        {
+            razem1++;
+        }
+        if((dzien>=01 && dzien<=31)&&punkty==2)
+        {
+            razem1++;
+        }
+        if(razem1==3) punkty++;
+
+        cout<<punkty<<endl;
+    }
+
+
+    return 0;
+}
+

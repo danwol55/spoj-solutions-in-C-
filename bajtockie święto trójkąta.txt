@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    short zestaw;
+    float zuzycie_kredy;
+    float cal_zuz_kredy;
+    short ile_uczestnikow;
+    float pole;
+    float pole_calkowite;
+    int p, a, b, c;
+
+    cin>>zestaw;
+    for(short i=0; i<zestaw; i++)
+    {
+        pole_calkowite=0;
+        cin>>ile_uczestnikow>>zuzycie_kredy;
+        for(int j=0; j<ile_uczestnikow; j++)
+        {
+            cin>>a>>b>>c;
+            p = (a+b+c)/2;
+            pole = sqrt(p*(p-a)*(p-b)*(p-c));
+            pole_calkowite+=pole;
+        }
+        zuzycie_kredy*=0.1;
+        cal_zuz_kredy=zuzycie_kredy*pole_calkowite;
+        cout<<round(cal_zuz_kredy)<<endl;
+    }
+
+
+	return 0;
+
+}
+

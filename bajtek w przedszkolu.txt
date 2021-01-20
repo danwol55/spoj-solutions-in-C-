@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstring>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+    int t;
+    while(cin>>t)
+    {
+        char *element = new char[2*t];
+        cin>>element; int iter1=0, razem=0;
+        for(int i=0; i<2*t; i++)
+        {
+            if(element[i]=='C')
+            {
+                for(int j=iter1; j<2*t; j++)
+                {
+                    iter1++;
+                    if(element[j]=='K')
+                    {
+                        razem+=abs(j-i);
+                        break;
+                    }
+                }
+            }
+        }
+        cout<<razem<<endl;
+
+
+        delete [] element;
+    }
+
+    return 0;
+
+}
+
+

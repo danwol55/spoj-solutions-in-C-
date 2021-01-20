@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstring>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int test;
+    cin>>test;
+    for(int i=0; i<test; i++)
+    {
+        int index = 0;
+        int base; cin>>base;
+        long long number1 = 0;
+        string number; cin>>number;
+        for(int i1=number.length()-1; i1>=0; i1--)
+        {
+            number1 += ((int)number[i1] - 48) * pow(base, index);
+            index++;
+        }
+        cout<<number1%1010101<<endl;
+    }
+    return 0;
+}

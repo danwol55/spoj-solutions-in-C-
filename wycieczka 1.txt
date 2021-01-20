@@ -1,0 +1,133 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int zestaw;
+    int miasta;
+
+    cin>>zestaw;
+
+    for(int i=0; i<zestaw; i++)
+    {
+        cin>>miasta;
+        int prawidlowe=1;
+        int **polaczenia = new int*[miasta];
+        int **wyniki = new int*[miasta];
+        int **ileSposobow = new int*[miasta];
+        for(int j=0; j<miasta; j++)
+        {
+            polaczenia[j] = new int[miasta];
+        }
+        for(int j=0; j<miasta; j++)
+        {
+            wyniki[j] = new int[miasta];
+        }
+        for(int j=0; j<miasta; j++)
+        {
+            ileSposobow[j] = new int[miasta];
+        }
+        for(int j=0; j<miasta; j++)
+        {
+            for(int k=0; k<miasta; k++)
+            {
+                cin>>polaczenia[j][k];
+            }
+        }
+        for(int j=0; j<miasta; j++)
+        {
+            for(int k=0; k<miasta; k++)
+            {
+                cin>>wyniki[j][k];
+            }
+        }
+        for(int j=0; j<miasta; j++)
+        {
+            for(int k=0; k<miasta; k++)
+            {
+                ileSposobow[j][k]=0;
+            }
+        }
+        for(int k=0; k<miasta; k++)
+        {
+            for(int w=0; w<miasta; w++)
+            {
+                if(w==k) //pierwsze z pierwszym
+                {
+                    for(int w1=0; w1<miasta; w1++)
+                    {
+                        if(polaczenia[w1][k]==1 && polaczenia[k][w1]==1)
+                        {
+                            ileSposobow[w][w]++;
+                        }
+                    }
+                }
+                else //pierwsze z drugim
+                {
+                    for(int w1=0; w1<miasta; w1++)
+                    {
+                        if(w1==k || w1==w) continue;
+                        else
+                        {
+                            if(polaczenia[w1][k]==1 && polaczenia[w][w1]==1)
+                            {
+                                ileSposobow[w][k]++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for(int w=0; w<miasta; w++)
+        {
+            for(int k=0; k<miasta; k++)
+            {
+                if(k<miasta-1)
+                {
+                    cout<<ileSposobow[w][k]<<" ";
+                }
+                else if(k==miasta-1)
+                {
+                    cout<<ileSposobow[w][k]<<endl;
+                }
+            }
+        }
+        for(int w=0; w<miasta; w++)
+        {
+            for(int k=0; k<miasta; k++)
+            {
+                if(wyniki[w][k]!=ileSposobow[w][k])
+                {
+                    prawidlowe=0;
+                }
+            }
+        }
+        if(prawidlowe==1) cout<<"TAK"<<endl;
+        else if(prawidlowe==0) cout<<"NIE"<<endl;
+
+        for(int j=0; j<miasta; j++)
+        {
+            delete [] polaczenia[j];
+        }
+        delete [] polaczenia;
+        for(int j=0; j<miasta; j++)
+        {
+            delete [] wyniki[j];
+        }
+        delete [] wyniki;
+        for(int j=0; j<miasta; j++)
+        {
+            delete [] ileSposobow[j];
+        }
+        delete [] ileSposobow;
+
+    }
+
+
+
+	return 0;
+
+}
+
+

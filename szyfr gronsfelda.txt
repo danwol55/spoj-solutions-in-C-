@@ -1,0 +1,89 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+    string polecenie;
+    string klucz;
+    string tekst;
+
+    cin>>polecenie;
+    cin>>klucz;
+    cin>>tekst;
+
+    if(polecenie=="SZYFRUJ")
+    {
+        int roznica;
+        int i1 = klucz.length();
+        if(tekst.length()>klucz.length())
+        {
+            roznica = tekst.length()-klucz.length();
+        }
+
+        for(int i=0; i<klucz.length(); i++)
+        {
+            tekst[i]+=klucz[i]-48;
+            if(tekst[i]>90)
+            {
+                tekst[i]-=26;
+            }
+
+        }
+        if(tekst.length()>klucz.length())
+        {
+            for(int i=0; i<roznica; i++)
+            {
+                tekst[i1]+=klucz[i]-48;
+                if(tekst[i1]>90)
+                {
+                    tekst[i1]-=26;
+                }
+                i1++;
+            }
+        }
+
+        cout<<tekst<<endl;
+    }
+    else if(polecenie=="DESZYFRUJ")
+    {
+        int roznica;
+        int i1 = klucz.length();
+        if(tekst.length()>klucz.length())
+        {
+            roznica = tekst.length()-klucz.length();
+        }
+
+        for(int i=0; i<klucz.length(); i++)
+        {
+            tekst[i]-=klucz[i]-48;
+            if(tekst[i]<65)
+            {
+                tekst[i]+=26;
+            }
+
+        }
+        if(tekst.length()>klucz.length())
+        {
+            for(int i=0; i<roznica; i++)
+            {
+                tekst[i1]-=klucz[i]-48;
+                if(tekst[i1]<65)
+                {
+                    tekst[i1]+=26;
+                }
+                i1++;
+            }
+        }
+
+        cout<<tekst<<endl;
+    }
+
+
+
+    return 0;
+}
+

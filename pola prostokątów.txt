@@ -1,0 +1,149 @@
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+list <int> punkty_x;
+list <int> punkty_y;
+
+int razem1;
+int razem2;
+int x1[4];
+int x2[4];
+int y1[4];
+int y2[4];
+
+void sprawdz(int x1[], int y1[], int x2[], int y2[])
+{
+        for(int i=0; i<4; i++)
+        {
+           if((x1[i]>=x2[0] && x1[i]<=x2[1]) && (y1[i]>=y2[0] && y1[i]<=y2[1]))
+            {
+                punkty_x.push_front(x1[i]);
+                punkty_y.push_front(y1[i]);
+                razem1++;
+            }
+        }
+        for(int i=0; i<4; i++)
+        {
+           if((x2[i]>=x1[0] && x2[i]<=x1[1]) && (y2[i]>=y1[0] && y2[i]<=y1[1]))
+            {
+                punkty_x.push_front(x2[i]);
+                punkty_y.push_front(y2[i]);
+                razem2++;
+            }
+        }
+}
+
+int main()
+{
+
+    cin>>x1[0]>>y1[0]>>x1[1]>>y1[1];
+    cin>>x2[0]>>y2[0]>>x2[1]>>y2[1];
+
+    razem1=0;
+    razem2=0;
+
+    x1[2] = x1[1];
+    y1[2] = y1[0];
+    x1[3] = x1[0];
+    y1[3] = y1[1];
+
+    x2[2] = x2[1];
+    y2[2] = y2[0];
+    x2[3] = x2[0];
+    y2[3] = y2[1];
+
+    int a1 = x1[1] - x1[0];
+    int b1 = y1[1] - y1[0];
+    int a2 = x2[1] - x2[0];
+    int b2 = y2[1] - y2[0];
+    int a3, b3;
+
+    int pole1 = a1 * b1;
+    int pole2 = a2 * b2;
+
+    sprawdz(x1, y1, x2, y2);
+
+    punkty_x.sort();
+    punkty_y.sort();
+
+    if(razem1==2 && razem2==0)
+    {
+        if(punkty_x.front()==punkty_x.back())
+        {
+            if(x1[0]<x2[0])
+            {
+                a3 = x1[1] - x2[0];
+                b3 = y1[1] - y1[0];
+            }
+            else if(x1[1]>x2[1])
+            {
+                a3 = x2[1] - x1[0];
+                b3 = y1[1] - y1[0];
+            }
+        }
+        else if(punkty_y.front()==punkty_y.back())
+        {
+            if(y1[1]>y2[1])
+            {
+                a3 = x1[1] - x1[0];
+                b3 = y2[1] - y1[0];
+            }
+            else if(y1[0]<y2[0])
+            {
+                a3 = x1[1] - x1[0];
+                b3 = y1[1] - y2[0];
+            }
+        }
+    }
+    else if(razem1==0 && razem2==2)
+    {
+        if(punkty_x.front()==punkty_x.back())
+        {
+            if(x2[0]<x1[0])
+            {
+                a3 = x2[1] - x1[0];
+                b3 = y2[1] - y2[0];
+            }
+            else if(x2[1]>x1[1])
+            {
+                a3 = x1[1] - x2[0];
+                b3 = y2[1] - y2[0];
+            }
+        }
+        else if(punkty_y.front()==punkty_y.back())
+        {
+            if(y2[1]>y1[1])
+            {
+                a3 = x2[1] - x2[0];
+                b3 = y1[1] - y2[0];
+            }
+            else if(y2[0]<y1[0])
+            {
+                a3 = x2[1] - x2[0];
+                b3 = y2[1] - y1[0];
+            }
+        }
+    }
+    else
+    {
+        a3 = punkty_x.back() - punkty_x.front();
+        b3 = punkty_y.back() - punkty_y.front();
+    }
+
+
+    int pole3 = a3 * b3;
+    int pole = (pole1 + pole2) - pole3;
+
+    cout<<pole<<endl;
+
+    punkty_x.clear();
+    punkty_y.clear();
+
+
+
+
+
+    return 0;
+}

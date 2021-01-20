@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+
+int main()
+{
+    int sp, sk;
+    int a, b, c;
+    cin>>a>>b>>c;
+
+    while(cin>>sp>>sk)
+    {
+        int ile=0;
+        for(int i=sp; i<=sk; i++)
+        {
+            if(i%a==0 || i%b==0 || i%c==0)
+            {
+                ile++;
+            }
+        }
+        cout<<ile<<endl;
+    }
+
+    return 0;
+
+}
+
+

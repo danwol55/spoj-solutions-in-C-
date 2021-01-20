@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+    char funkcja;
+    int liczba1, liczba2;
+
+    while(cin>>funkcja)
+    {
+        switch (funkcja)
+        {
+        case '+':
+            cin>>liczba1>>liczba2;
+            cout<<liczba1+liczba2<<endl;
+            break;
+        case '-':
+            cin>>liczba1>>liczba2;
+            cout<<liczba1-liczba2<<endl;
+            break;
+        case '*':
+            cin>>liczba1>>liczba2;
+            cout<<liczba1*liczba2<<endl;
+            break;
+        case '/':
+            cin>>liczba1>>liczba2;
+            cout<<liczba1/liczba2<<endl;
+            break;
+        case '%':
+            cin>>liczba1>>liczba2;
+            cout<<liczba1%liczba2<<endl;
+            break;
+        }
+    }
+
+
+    return 0;
+}

@@ -1,0 +1,34 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int ile, test;
+    int liczba1;
+    cin>>test;
+    for(int i=0; i<test; i++)
+    {
+        cin>>ile;
+        int *tab = new int[ile];
+        for(int j=0; j<ile; j++)
+        {
+            cin>>tab[j];
+        }
+        liczba1 = tab[0];
+        for(int k=0; k<ile-1; k++)
+        {
+            tab[k] = tab[k+1];
+        }
+        tab[ile-1] = liczba1;
+        for(int l=0; l<ile; l++)
+        {
+            cout<<tab[l]<<" ";
+        }
+        cout<<endl;
+
+        delete [] tab;
+
+    }
+    return 0;
+}

@@ -1,0 +1,102 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+    string nazwa;
+    int dlugosc;
+    int razem;
+
+    char samogloski_d[]={'A', 'E', 'I', 'O', 'U', 'Y'};
+    char samogloski_m[]={'a', 'e', 'i', 'o', 'u', 'y'};
+
+    cin>>dlugosc;
+    cin>>nazwa;
+
+    if(nazwa.length()==dlugosc)
+    {
+        cout<<nazwa<<endl;
+    }
+
+    else
+
+
+        for(int i=nazwa.length()-1; i>=0; i--)
+        {
+            if(nazwa[i]==95)
+                {
+                    nazwa.erase(i,1);
+                    if(nazwa.length()==dlugosc)
+                    {
+                        razem=1;
+                    }
+                }
+                if(razem==1) break;
+        }
+
+        if(razem!=1)
+        {
+            for(int i=nazwa.length()-1; i>=0; i--)
+            {
+                if(nazwa[i]>=48 && nazwa[i]<=57)
+                {
+                    nazwa.erase(i,1);
+                    if(nazwa.length()==dlugosc)
+                    {
+                        razem=1;
+                    }
+                }
+                if(razem==1) break;
+            }
+        }
+
+        if(razem!=1)
+        {
+            for(int i=1; i<nazwa.length(); i++)
+            {
+                for(int j=0; j<6; j++)
+                {
+                    if(nazwa[i]==samogloski_d[j])
+                    {
+                        nazwa.erase(i,1);
+                    }
+                    else if(nazwa[i]==samogloski_m[j])
+                    {
+                        nazwa.erase(i,1);
+                    }
+                    if(nazwa.length()==dlugosc)
+                    {
+                        razem=1;
+                    }
+                    if(razem==1) break;
+                }
+
+
+            }
+
+        }
+
+        if(razem!=1)
+        {
+            for(int i=nazwa.length()-2; i>=0; i--)
+            {
+                nazwa.erase(i,1);
+                if(nazwa.length()==dlugosc)
+                {
+                    razem=1;
+                }
+                if(razem==1) break;
+            }
+        }
+        cout<<nazwa<<endl;
+
+
+
+
+    return 0;
+}
+

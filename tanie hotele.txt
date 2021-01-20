@@ -1,0 +1,72 @@
+#include <algorithm>
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+
+
+using namespace std;
+
+class hotels
+{
+public:
+
+    int odleglosc;
+    int cena;
+
+    bool operator < (const hotels &x)const
+    {
+        return cena<x.cena;
+    }
+};
+
+
+int main()
+{
+    int dlugosc;
+    int hotele;
+
+    cin>>dlugosc>>hotele;
+
+    hotels *hotel = new hotels[hotele];
+    int *odleglosci = new int[hotele];
+    int *cena = new int[hotele];
+    vector <hotels> hotels1;
+    for(int i=0; i<hotele; i++)
+    {
+        cin>>odleglosci[i]>>cena[i];
+        hotel[i].odleglosc = odleglosci[i];
+        hotel[i].cena = cena[i];
+    }
+    int dlugosc2=800;
+    int dlugosc1=0;
+    int razem=0;
+    int suma=0;
+    for(int j=0; j<hotele; j++)
+    {
+        for(int i=0; i<hotele; i++)
+        {
+            if(hotel[i].odleglosc>dlugosc1 && hotel[i].odleglosc<=dlugosc2)
+            {
+                hotels1.push_back(hotel[i]);
+                razem++;
+            }
+
+        }
+        if(razem==hotele) j=hotele;
+        sort(hotels1.begin(),hotels1.end());
+        dlugosc2 += hotels1[0].odleglosc;
+        dlugosc1 = hotels1[0].odleglosc;
+        suma+=hotels1[0].cena;
+        hotels1.clear();
+
+    }
+
+    cout<<suma<<endl;
+
+    delete [] hotel;
+    delete [] odleglosci;
+    delete [] cena;
+
+
+    return 0;
+}

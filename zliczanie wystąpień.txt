@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int ile, poszukiwana;
+
+    while(cin>>poszukiwana>>ile)
+    {
+    int *tab = new int[ile];
+    int powtorzenia=0;
+
+    for(int i=0; i<ile; i++)
+    {
+        cin>>tab[i];
+    }
+    for(int i=0; i<ile; i++)
+    {
+        if(tab[i]==poszukiwana)
+        {
+            powtorzenia++;
+        }
+    }
+    cout<<powtorzenia<<endl;
+
+    delete [] tab;
+    }
+
+
+    return 0;
+}
+

@@ -1,0 +1,49 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int zestaw;
+	int godzin;
+
+	cin >> zestaw;
+	for (int i = 0; i < zestaw; i++)
+	{
+		cin >> godzin;
+		int* zegar = new int[godzin];
+		for (int j = 0; j < godzin; j++)
+		{
+			cin >> zegar[j];
+		}
+	
+		for (int j = 0; j < godzin; j++)
+		{
+			if (zegar[j] == 1)
+			{
+				for (int j1 = j; j1 < godzin; j1++)
+				{
+					cout << zegar[j1] << " ";
+				}
+				if (j != 0)
+				{
+					for (int j2 = 0; j2 < j; j2++)
+					{
+						cout << zegar[j2] << " ";
+					}
+					cout << endl;
+				}
+				break;
+			}
+		}
+	
+		delete [] zegar;
+
+	}
+
+
+	return 0;
+	
+	
+	
+}

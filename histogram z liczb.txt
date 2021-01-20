@@ -1,0 +1,80 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+    float wystapienia[21]={};
+    int maxymalna;
+    float ile;
+    int cyfra;
+
+    while(cin>>cyfra)
+    {
+        wystapienia[cyfra+10]++;
+
+        if(cyfra==11) break;
+    }
+
+    maxymalna = wystapienia[0];
+    for(int i=1; i<21; i++)
+    {
+        if(wystapienia[i]>maxymalna)
+        {
+            maxymalna = wystapienia[i];
+        }
+    }
+
+    for(int i=-10; i<11; i++)
+    {
+        ile = round(30*wystapienia[i+10]/maxymalna);
+
+        if(i==-10)
+        {
+            cout<<i<<":|";
+            for(int i=1; i<=30; i++)
+            {
+                if(i<=ile) cout<<'*';
+                else cout<<' ';
+            }
+            cout<<'|'<<endl;
+        }
+        else if(i>-10 && i<0)
+        {
+            cout<<" "<<i<<":|";
+            for(int i=1; i<=30; i++)
+            {
+                if(i<=ile) cout<<'*';
+                else cout<<' ';
+            }
+            cout<<'|'<<endl;
+        }
+        else if(i>=0 && i<=9)
+        {
+            cout<<"  "<<i<<":|";
+            for(int i=1; i<=30; i++)
+            {
+                if(i<=ile) cout<<'*';
+                else cout<<' ';
+            }
+            cout<<'|'<<endl;
+        }
+        else if(i==10)
+        {
+            cout<<" "<<i<<":|";
+            for(int i=1; i<=30; i++)
+            {
+                if(i<=ile) cout<<'*';
+                else cout<<' ';
+            }
+            cout<<'|'<<endl;
+        }
+
+    }
+
+
+    return 0;
+}

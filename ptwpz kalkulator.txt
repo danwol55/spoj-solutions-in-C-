@@ -1,0 +1,54 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int zestaw;
+	cin >> zestaw;
+	char wyrazenie[99];
+	for (int i = 0; i < zestaw; i++)
+	{
+		int suma = 0;
+		wyrazenie[99]={};
+		cin >> wyrazenie;
+		if (wyrazenie[0] != '-')
+		{
+			suma += wyrazenie[0] - 48;
+			for (int j = 1; j < 99; j++)
+			{
+				if (wyrazenie[j] == '+')
+				{
+					suma += wyrazenie[j + 1] - 48;
+				}
+				else if (wyrazenie[j] == '-')
+				{
+					suma -= wyrazenie[j + 1] - 48;
+				}
+			}
+		}
+		else if (wyrazenie[0] == '-')
+		{
+			for (int j = 0; j < 99; j++)
+			{
+				if (wyrazenie[j] == '+')
+				{
+					suma += wyrazenie[j + 1] - 48;
+				}
+				else if (wyrazenie[j] == '-')
+				{
+					suma -= wyrazenie[j + 1] - 48;
+				}
+			}
+		}
+
+		cout<<suma<<endl;
+	}
+
+
+	return 0;
+
+
+
+}
+

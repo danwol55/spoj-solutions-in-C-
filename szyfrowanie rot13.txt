@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+
+
+using namespace std;
+
+
+int main()
+{
+    string zdanie;
+
+    while(getline(cin, zdanie))
+    {
+       for(int i=0; i<zdanie.length(); i++)
+       {
+           if(zdanie[i]>=97 && zdanie[i]<=109)
+           {
+               zdanie[i]+=13;
+           }
+           else if(zdanie[i]>=110 && zdanie[i]<=122)
+           {
+               zdanie[i]-=13;
+           }
+           else if(zdanie[i]>=65 && zdanie[i]<=77)
+           {
+               zdanie[i]+=13;
+           }
+           else if(zdanie[i]>=78 && zdanie[i]<=90)
+           {
+               zdanie[i]-=13;
+           }
+           else if(zdanie[i]>=48 && zdanie[i]<=52)
+           {
+               zdanie[i]+=5;
+           }
+           else if(zdanie[i]>=53 && zdanie[i]<=57)
+           {
+               zdanie[i]-=5;
+           }
+       }
+       cout<<zdanie<<endl;
+
+    }
+
+
+    return 0;
+}

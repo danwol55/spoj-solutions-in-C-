@@ -1,0 +1,228 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+string jednosci[]={"","jeden","dwa","trzy","cztery","piec","szesc","siedem","osiem","dziewiec"};
+string dziesiatek[]={"","jedenascie","dwanascie","trzynascie","czternascie","pietnascie",
+                           "szesnascie","siedemnascie","osiemnascie","dziewietnascie","dwadziescia"};
+string dziesiatki[]={"","dziesiec","dwadziescia","trzydziesci","czterdziesci","piecdziesiat","szescdziesiat",
+                          "siedemdziesiat","osiemdziesiat","dziewiecdziesiat"};
+string setki[]={"","sto","dwiescie","trzysta","czterysta","piecset","szescset","siedemset",
+                    "osiemset","dziewiecset"};
+
+long long liczba;
+string napis;
+int zestaw;
+
+void setki1()
+{
+    if(liczba/10%10==1)
+    {
+        if(liczba%10==0)
+        {
+            napis+=setki[liczba/100%10];
+            napis+=dziesiatki[1];
+        }
+        else
+        {
+            napis+=setki[liczba/100%10];
+            napis+=dziesiatek[liczba%10];
+        }
+    }
+    else
+    {
+        napis+=setki[liczba/100%10];
+        napis+=dziesiatki[liczba/10%10];
+        napis+=jednosci[liczba%10];
+    }
+}
+void setki2()
+{
+    if(liczba/10000%10==1)
+    {
+        if(liczba/1000%10==0)
+        {
+            napis+=setki[liczba/100000%10];
+            napis+=dziesiatki[1];
+        }
+        else
+        {
+            napis+=setki[liczba/100000%10];
+            napis+=dziesiatek[liczba/1000%10];
+        }
+    }
+    else
+    {
+        napis+=setki[liczba/100000%10];
+        napis+=dziesiatki[liczba/10000%10];
+        napis+=jednosci[liczba/1000%10];
+    }
+    napis+=" tys ";
+
+}
+void setki3()
+{
+    if(liczba/10000000%10==1)
+    {
+        if(liczba/1000000%10==0)
+        {
+            napis+=setki[liczba/100000000%10];
+            napis+=dziesiatki[1];
+        }
+        else
+        {
+            napis+=setki[liczba/100000000%10];
+            napis+=dziesiatek[liczba/1000000%10];
+        }
+    }
+    else
+    {
+        napis+=setki[liczba/100000000%10];
+        napis+=dziesiatki[liczba/10000000%10];
+        napis+=jednosci[liczba/1000000%10];
+    }
+    napis+=" mln ";
+}
+
+
+
+int main()
+{
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+    napis = "";
+    cin>>liczba;
+    int cyfr = (int)log10(liczba)+1;
+
+    if(liczba==0) cout<<"zero"<<endl;
+    else if(cyfr==1) napis+=jednosci[liczba];
+    else if(cyfr==2)
+    {
+        if(liczba<20)
+        {
+            if(liczba==10) napis+=dziesiatki[1];
+            else napis+=dziesiatek[liczba%10];
+        }
+        else if(liczba>=20)
+        {
+            napis+=dziesiatki[liczba/10%10];
+            napis+=jednosci[liczba%10];
+        }
+    }
+
+    else if(cyfr==3)
+    {
+        setki1();
+    }
+    else if(cyfr==4)
+    {
+        napis+=jednosci[liczba/1000%10]+" tys ";
+        setki1();
+    }
+    else if(cyfr==5)
+    {
+
+        if(liczba/10000%10==1)
+        {
+            if(liczba/1000%10==0)
+            {
+                napis+=dziesiatki[1]+" tys ";
+            }
+            else
+            {
+                napis+=dziesiatek[liczba/1000%10]+" tys ";
+            }
+            setki1();
+        }
+        else
+        {
+           napis+=dziesiatki[liczba/10000%10];
+           napis+=jednosci[liczba/1000%10];
+           napis+=" tys ";
+           setki1();
+        }
+    }
+    else if(cyfr==6)
+    {
+        setki2();
+        setki1();
+    }
+    else if(cyfr==7)
+    {
+        napis+=jednosci[liczba/1000000%10]+" mln ";
+        if(liczba/100000%10!=0 || liczba/10000%10!=0 || liczba/1000%10!=0)
+        {
+           setki2();
+        }
+        if(liczba/100%10!=0 || liczba/10%10!=0 || liczba%10!=0)
+        {
+           setki1();
+        }
+
+    }
+    else if(cyfr==8)
+    {
+       if(liczba/10000000%10==1)
+       {
+           if(liczba/1000000%10==0)
+           {
+               napis+=dziesiatki[1]+" mln ";
+           }
+           else
+           {
+               napis+=dziesiatek[liczba/1000000%10];
+               napis+=" mln ";
+           }
+       }
+       else
+       {
+           napis+=dziesiatki[liczba/10000000%10];
+           napis+=jednosci[liczba/1000000%10];
+           napis+=" mln ";
+       }
+       if(liczba/100000%10!=0 || liczba/10000%10!=0 || liczba/1000%10!=0)
+        {
+           setki2();
+        }
+        if(liczba/100%10!=0 || liczba/10%10!=0 || liczba%10!=0)
+        {
+           setki1();
+        }
+    }
+    else if(cyfr==9)
+    {
+        setki3();
+        if(liczba/100000%10!=0 || liczba/10000%10!=0 || liczba/1000%10!=0)
+        {
+           setki2();
+        }
+        if(liczba/100%10!=0 || liczba/10%10!=0 || liczba%10!=0)
+        {
+           setki1();
+        }
+    }
+    else if(cyfr==10)
+    {
+        napis+=jednosci[liczba/1000000000%10]+" mld ";
+        if(liczba/100000000%10!=0 || liczba/10000000%10!=0 || liczba/1000000%10!=0)
+        {
+           setki3();
+        }
+        if(liczba/100000%10!=0 || liczba/10000%10!=0 || liczba/1000%10!=0)
+        {
+           setki2();
+        }
+        if(liczba/100%10!=0 || liczba/10%10!=0 || liczba%10!=0)
+        {
+           setki1();
+        }
+    }
+    cout<<napis<<endl;
+    }
+
+    return 0;
+}

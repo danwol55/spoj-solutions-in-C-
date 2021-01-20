@@ -1,0 +1,96 @@
+#include <algorithm>
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+
+
+using namespace std;
+
+
+int main()
+{
+    int macierz[9][9];
+    vector <int> tab;
+    int zestaw;
+
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+        int razem2=0;
+        int razem1=0;
+        int razem;
+        for(int k=0; k<9; k++)
+        {
+            for(int w=0; w<9; w++)
+            {
+                cin>>macierz[w][k];
+            }
+        }
+        for(int k=0; k<9; k++)
+        {
+            razem=0;
+            for(int w=0; w<9; w++)
+            {
+                int x = macierz[w][k];
+                tab.push_back(x);
+            }
+            sort(tab.begin(), tab.end());
+            for(int i=0; i<9; i++)
+            {
+                if(tab[i]==i+1) razem++;
+            }
+            if(razem==9) razem1++;
+            tab.clear();
+
+        }
+        if(razem1==9) razem2++;
+
+        for(int w=0; w<9; w++)
+        {
+            razem=0;
+            for(int k=0; k<9; k++)
+            {
+                int x = macierz[w][k];
+                tab.push_back(x);
+            }
+            sort(tab.begin(), tab.end());
+            for(int i=0; i<9; i++)
+            {
+                if(tab[i]==i+1) razem++;
+            }
+            if(razem==9) razem1++;
+            tab.clear();
+        }
+        if(razem1==18) razem2++;
+
+        for(int c=0; c<=6; c+=3)
+        {
+            for(int i=0; i<=6; i+=3)
+            {
+                for(int w=0; w<3; w++)
+                {
+                    for(int k=0; k<3; k++)
+                    {
+                        int x = macierz[c+w][i+k];
+                        tab.push_back(x);
+                    }
+                }
+                razem=0;
+                sort(tab.begin(), tab.end());
+                for(int i=0; i<9; i++)
+                {
+                    if(tab[i]==i+1) razem++;
+                }
+                if(razem==9) razem1++;
+                tab.clear();
+            }
+        }
+        if(razem1==27) razem2++;
+        if(razem2==3) cout<<"TAK"<<endl;
+        else cout<<"NIE"<<endl;
+
+    }
+
+
+    return 0;
+}

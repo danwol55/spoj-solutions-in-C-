@@ -1,0 +1,53 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+    int rejestr[10];
+    int numer_rejestru;
+    int liczba1, liczba2;
+    char funkcja;
+
+    while(cin>>funkcja)
+    {
+        switch (funkcja)
+        {
+        case '+':
+            cin>>liczba1>>liczba2;
+            if(liczba1>9||liczba2>9)break;
+            cout<<rejestr[liczba1]+rejestr[liczba2]<<endl;
+            break;
+        case '-':
+            cin>>liczba1>>liczba2;
+            if(liczba1>9||liczba2>9)break;
+            cout<<rejestr[liczba1]-rejestr[liczba2]<<endl;
+            break;
+        case '*':
+            cin>>liczba1>>liczba2;
+            if(liczba1>9||liczba2>9)break;
+            cout<<rejestr[liczba1]*rejestr[liczba2]<<endl;
+            break;
+        case '/':
+            cin>>liczba1>>liczba2;
+            if(liczba1>9||liczba2>9)break;
+            cout<<rejestr[liczba1]/rejestr[liczba2]<<endl;
+            break;
+        case '%':
+            cin>>liczba1>>liczba2;
+            if(liczba1>9||liczba2>9)break;
+            cout<<rejestr[liczba1]%rejestr[liczba2]<<endl;
+            break;
+        case 'z':
+            cin>>numer_rejestru>>liczba2;
+            if(numer_rejestru>9)break;
+            rejestr[numer_rejestru]=liczba2;
+            break;
+        }
+    }
+
+
+
+    return 0;
+}

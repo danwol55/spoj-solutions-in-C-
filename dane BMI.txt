@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include <cmath>
+
+using namespace std;
+
+class czlowiek
+{
+public:
+
+    string imie;
+    int waga, wzrost;
+
+    void wczytaj(string n1, int n2, int n3)
+    {
+        imie = n1;
+        waga = n2;
+        wzrost = n3;
+    }
+};
+
+
+int main()
+{
+    int zestaw;
+    cin>>zestaw;
+    string imie1;
+    int waga1, wzrost1;
+    czlowiek *dane = new czlowiek[zestaw];
+    for(int i=0; i<zestaw; i++)
+    {
+        cin>>imie1>>waga1>>wzrost1;
+        dane[i].wczytaj(imie1, waga1, wzrost1);
+    }
+    float *bmi = new float[zestaw];
+    for(int i=0; i<zestaw; i++)
+    {
+        float dzielnik = pow(((float)dane[i].wzrost/100), 2);
+        bmi[i]=dane[i].waga/dzielnik;
+    }
+    cout<<"niedowaga"<<endl;
+    for(int i=0; i<zestaw; i++)
+    {
+        if(bmi[i]<18.5)
+        {
+            cout<<dane[i].imie<<endl;
+        }
+    }
+    cout<<endl;
+    cout<<"waga prawidlowa"<<endl;
+    for(int i=0; i<zestaw; i++)
+    {
+        if(bmi[i]>=18.5 && bmi[i]<25)
+        {
+            cout<<dane[i].imie<<endl;
+        }
+    }
+    cout<<endl;
+    cout<<"nadwaga"<<endl;
+    for(int i=0; i<zestaw; i++)
+    {
+        if(bmi[i]>=25)
+        {
+            cout<<dane[i].imie<<endl;
+        }
+    }
+    delete [] bmi;
+    delete [] dane;
+
+
+    return 0;
+
+}
+
+

@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    string zdanie;
+    int ile=0;
+
+    while(getline(cin, zdanie))
+    {
+        if(cin.eof()) break;
+        else ile++;
+    }
+    cout<<ile+1<<endl;
+
+
+
+    return 0;
+}
+

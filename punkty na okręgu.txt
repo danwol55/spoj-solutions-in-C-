@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+	int szerokosc1, szerokosc2;
+	int wysokosc1, wysokosc2;
+	int srodek1, srodek2;
+	int promien, punktow;
+	int punkt1, punkt2;
+
+	cin >> srodek1 >> srodek2 >> promien;
+	cin >> punktow;
+
+	szerokosc1 = srodek1 - promien;
+	szerokosc2 = srodek1 + promien;
+	wysokosc1 = srodek2 - promien;
+	wysokosc2 = srodek2 + promien;
+
+	for (int i = 0; i < punktow; i++)
+	{
+		cin >> punkt1 >> punkt2;
+		int punkt1_1 = punkt1 - srodek1;
+		int punkt2_1 = punkt2 - srodek2;
+		int wynik = punkt1_1 * punkt1_1 + punkt2_1 * punkt2_1;
+
+		if (wynik == promien * promien)
+		{
+			cout << "E" << endl;
+		}
+		else if (wynik < promien * promien)
+		{
+			cout << "I" << endl;
+		}
+		else
+		{
+			cout << "O" << endl;
+		}
+
+	}
+
+
+	return 0;
+	
+	
+	
+}

@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int zestaw;
+    int reszta;
+    int liczba1;
+    int liczba2;
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+        cin>>liczba1>>liczba2;
+        reszta = liczba1%liczba2;
+        cout<<reszta<<endl;
+    }
+
+
+	return 0;
+
+}
+

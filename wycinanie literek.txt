@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int main()
+{
+    string napis1;
+    string napis;
+    char c;
+
+    while(cin>>c>>napis)
+    {
+        napis1="";
+        for(int i=0; i<napis.length(); i++)
+        {
+            if(napis[i]!=c) napis1+=napis[i];
+        }
+
+        cout<<napis1<<endl;
+    }
+
+
+
+    return 0;
+}
+
+

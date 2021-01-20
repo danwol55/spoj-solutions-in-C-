@@ -1,0 +1,30 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int zestaw;
+    const double pi = M_PI;
+    double promien, co_ile, dlugosc;
+    long ile_cie, ile_osob, srednica;
+
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+        cin>>srednica>>ile_osob;
+        promien = (double)srednica / 2;
+        dlugosc = 2 * pi * promien;
+        co_ile = dlugosc / ile_osob;
+        ile_cie = ile_osob / 2;
+
+        cout<<setprecision(4)<<co_ile<<" "<<ile_cie;
+    }
+
+
+	return 0;
+
+}
+

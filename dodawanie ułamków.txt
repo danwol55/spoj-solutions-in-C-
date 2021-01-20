@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cstring>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+    string ulamek1, ulamek2;
+    int licznik1, licznik2;
+    int mianownik1, mianownik2;
+
+    cin>>ulamek1>>ulamek2;
+    licznik1 = ulamek1[0]-48;
+    licznik2 = ulamek2[0]-48;
+    mianownik1 = ulamek1[2]-48;
+    mianownik2 = ulamek2[2]-48;
+
+    int licznik = (licznik1*mianownik2)+(licznik2*mianownik1);
+    int mianownik = mianownik1 * mianownik2;
+
+    if(licznik<mianownik)
+    {
+        for(int i=licznik; i>=1; i--)
+        {
+            if(licznik%i==0 && mianownik%i==0)
+            {
+                licznik/=i; mianownik/=i;
+            }
+        }
+    }
+    else
+    {
+        for(int i=mianownik; i>=1; i--)
+        {
+            if(licznik%i==0 && mianownik%i==0)
+            {
+                licznik/=i; mianownik/=i;
+            }
+        }
+    }
+    cout<<ulamek1<<" + "<<ulamek2<<" = "<<licznik<<"/"<<mianownik;
+
+    return 0;
+
+}
+
+

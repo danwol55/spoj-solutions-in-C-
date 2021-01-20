@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+
+int main()
+{
+    int zestaw;
+    char warunek;
+    int wartosc;
+
+    cin>>zestaw;
+    int *tab = new int[zestaw];
+
+    for(int i=0; i<zestaw; i++)
+    {
+        cin>>tab[i];
+    }
+    cin>>warunek>>wartosc;
+
+    if(warunek=='>')
+    {
+        for(int i=0; i<zestaw; i++)
+        {
+            if(tab[i]>wartosc)
+            {
+                cout<<tab[i]<<endl;
+            }
+        }
+    }
+    else if(warunek=='<')
+    {
+        for(int i=0; i<zestaw; i++)
+        {
+            if(tab[i]<wartosc)
+            {
+                cout<<tab[i]<<endl;
+            }
+        }
+    }
+
+    delete [] tab;
+
+
+    return 0;
+}

@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n1, n2, k1, k2;
+    int razem;
+
+    cin>>n1>>k1>>n2>>k2;
+
+    razem = n1*k1 + n2*k2;
+
+    cout<<razem<<endl;
+
+    return 0;
+}
+

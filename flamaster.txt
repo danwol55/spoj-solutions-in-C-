@@ -1,0 +1,52 @@
+#include <iostream>
+#include <algorithm>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+    string napis;
+    int  ile_zestawow;
+    cin>>ile_zestawow;
+    for(int j=0; j<ile_zestawow; j++)
+    {
+    cin>>napis;
+    transform(napis.begin(),napis.end(),napis.begin(),::toupper);
+    int i=0;
+
+    while(i<napis.length())
+    {
+        char aktualny_znak;
+        int powtorzenia;
+        powtorzenia = 0;
+        aktualny_znak = napis[i];
+
+        for(; i<napis.length()&&aktualny_znak==napis[i]; i++)
+        {
+           powtorzenia++;
+        }
+        if(powtorzenia==1)
+        {
+           cout<<aktualny_znak;
+        }
+        else if(powtorzenia==2)
+        {
+            cout<<aktualny_znak<<aktualny_znak;
+        }
+        else if(powtorzenia>2)
+        {
+            cout<<aktualny_znak<<powtorzenia;
+        }
+
+    }
+    cout<<endl;
+    }
+
+    return 0;
+}

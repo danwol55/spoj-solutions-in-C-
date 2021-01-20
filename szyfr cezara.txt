@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string napis;
+
+    while(getline(cin,napis))
+    {
+
+    for(int i=0; i<napis.length(); i++)
+    {
+        if(napis[i]>=65&&napis[i]<=87)
+        {
+            napis[i]+=3;
+        }
+        else if(napis[i]==88)
+        {
+            napis[i]=65;
+        }
+        else if(napis[i]==89)
+        {
+            napis[i]=66;
+        }
+        else if(napis[i]==90)
+        {
+            napis[i]=67;
+        }
+
+    }
+    cout<<napis<<endl;
+    }
+
+
+
+    return 0;
+}
+
+

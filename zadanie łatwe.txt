@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+
+int main()
+{
+    int zestaw;
+    string ciag;
+    string podciag;
+
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+        cin>>ciag>>podciag;
+        int punkt=0;
+        int iter1=0;
+        char aktZnak;
+
+        for(int j=0; j<ciag.length(); j++)
+        {
+            aktZnak = podciag[iter1];
+            if(aktZnak == ciag[j])
+            {
+                iter1++; punkt++;
+            }
+
+        }
+        if(punkt == podciag.length())
+        {
+            cout<<"TAK"<<endl;
+        }
+        else
+        {
+            cout<<"NIE"<<endl;
+        }
+    }
+
+    return 0;
+
+}
+
+

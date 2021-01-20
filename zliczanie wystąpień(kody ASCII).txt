@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cstring>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+    string zdanie;
+
+    unsigned char napis[1000];
+    int powtorzenia[256]={};
+    int ilosc_linii=0;
+
+    wstring zdanie1;
+    while(getline(wcin, zdanie1))
+    {
+    for(int i=0; i<256; i++)
+    {
+        int powtorzenia1=0;
+        for(int j=0; j<zdanie1.length(); j++)
+        {
+            if(i==zdanie1[j]) powtorzenia1++;
+        }
+        if(powtorzenia1>0)
+        {
+            cout<<i<<" "<<powtorzenia1<<endl;
+        }
+    }
+    }
+
+    while(getline(cin, zdanie))
+    {
+    for(int i=0; i<zdanie.length(); i++)
+    {
+        napis[i]=static_cast<unsigned char>(zdanie[i]);
+    }
+    ilosc_linii++;
+
+    for(int i=0; i<256; i++)
+    {
+
+        for(int j=0; j<zdanie.length(); j++)
+        {
+            if(napis[j]==i)
+            {
+                powtorzenia[i]++;
+            }
+        }
+
+
+    }
+
+    }
+
+    for(int i=0; i<256; i++)
+    {
+        if(i==10 && ilosc_linii>0)
+        {
+            cout<<10<<" "<<ilosc_linii<<endl;
+        }
+        if(powtorzenia[i]>0)
+        {
+            cout<<i<<" "<<powtorzenia[i]<<endl;
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+

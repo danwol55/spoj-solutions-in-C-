@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+    int zestaw;
+    cin>>zestaw;
+    for(int i=0; i<zestaw; i++)
+    {
+        int liczba;
+        int wynik=0;
+        cin>>liczba;
+        if(liczba<10)
+        {
+            wynik*=liczba;
+        }
+        else if(liczba>=10)
+        {
+            int powtorzenia=1;
+            bool podzielna=true;
+            while(podzielna)
+            {
+                for(int j=9; j>1; j--)
+                {
+                    if(liczba%j==0)
+                    {
+                        liczba/=j;
+                        wynik+=powtorzenia*j;
+                        powtorzenia*=10;
+                        break;
+                    }
+                    if(j==2 && liczba%j!=0)
+                    {
+                        podzielna = false;
+                    }
+                }
+            }
+        }
+        if(liczba==1) cout<<wynik<<endl;
+        else cout<<"nie ma takiej"<<endl;
+
+    }
+
+
+    return 0;
+
+}
+
+

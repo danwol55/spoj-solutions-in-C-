@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+
+int main()
+{
+    int liczba;
+    int mnoznikA;
+    int mnoznikB;
+
+    while(cin>>liczba)
+    {
+        mnoznikA = 1;
+        mnoznikB = 1;
+        for(int i=2; i<=8; i+=2)
+        {
+            mnoznikA *= i;
+            if(mnoznikA>=liczba)
+            {
+                cout<<"A"<<endl;
+                break;
+            }
+            mnoznikB *= i+1;
+            if(mnoznikB>=liczba)
+            {
+                cout<<"B"<<endl;
+                break;
+            }
+        }
+    }
+
+    return 0;
+
+}
+
+

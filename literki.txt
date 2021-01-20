@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cstring>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+    string napis;
+    getline(cin, napis);
+    float powtorzenia[26]={};
+    float ileLiter = napis.length();
+    cout<<"liczba liter:"<<ileLiter<<endl;
+    for(int i=0; i<napis.length(); i++)
+    {
+        if(napis[i]==32)
+        {
+            ileLiter--; continue;
+        }
+        int aktIndeks = (int)napis[i]-65;
+        powtorzenia[aktIndeks]++;
+    }
+    cout<<"liczba liter:"<<ileLiter<<endl;
+    for(int i=0; i<26; i++)
+    {
+        if(powtorzenia[i]>0)
+        {
+            powtorzenia[i]=round((powtorzenia[i]/ileLiter)*100);
+        }
+    }
+    for(int i=65; i<90; i++)
+    {
+        cout<<(char)i;
+        if(powtorzenia[i-65]>0)
+        {
+            for(int j=0; j<powtorzenia[i-65]; j++)
+            {
+                cout<<"*";
+            }
+            cout<<endl;
+        }
+        else cout<<endl;
+    }
+
+    return 0;
+
+}
+
+

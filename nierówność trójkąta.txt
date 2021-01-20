@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    float a, b, c;
+    float najdluzszy;
+
+    while(cin>>a>>b>>c)
+    {
+    najdluzszy = a;
+    if(b>najdluzszy) najdluzszy = b;
+    if(c>najdluzszy) najdluzszy = c;
+
+    if(najdluzszy==a)
+    {
+        if(a<b+c) cout<<1<<endl;
+        else cout<<0<<endl;
+    }
+    else if(najdluzszy==b)
+    {
+        if(b<a+c) cout<<1<<endl;
+        else cout<<0<<endl;
+    }
+    else if(najdluzszy==c)
+    {
+        if(c<a+b) cout<<1<<endl;
+        else cout<<0<<endl;
+    }
+    }
+
+
+    return 0;
+}
+
